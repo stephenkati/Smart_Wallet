@@ -1,16 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Item, type: :model do
-
   describe 'validations' do
-    let(:user) { User.create(name: "John Doe", email: "johndoe@example.com", password: "password") }
-    let(:item) { Item.new(name: "item", amount: 2, author: user) }
+    let(:user) { User.create(name: 'John Doe', email: 'johndoe@example.com', password: 'password') }
+    let(:item) { Item.new(name: 'item', amount: 2, author: user) }
 
     before do
       item.save
     end
 
-    it "should validate presence of name" do
+    it 'should validate presence of name' do
       expect(item).to be_valid
       item.name = nil
 
@@ -30,7 +29,6 @@ RSpec.describe Item, type: :model do
 
       expect(item).to_not be_valid
     end
-
   end
 
   describe 'item associations' do
@@ -46,5 +44,4 @@ RSpec.describe Item, type: :model do
       expect(Item.reflect_on_association(:author).macro).to eq(:belongs_to)
     end
   end
-
 end

@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Category, type: :model do
   describe 'validations' do
-    let(:user) { User.create(name: "John Doe", email: "johndoe@example.com", password: "password") }
-    let(:category) { Category.new(name: "Food", icon: "icon", user: user) }
+    let(:user) { User.create(name: 'John Doe', email: 'johndoe@example.com', password: 'password') }
+    let(:category) { Category.new(name: 'Food', icon: 'icon', user:) }
 
     before do
       category.save
@@ -44,5 +44,4 @@ RSpec.describe Category, type: :model do
       expect(Category.reflect_on_association(:user).macro).to eq(:belongs_to)
     end
   end
-  
 end
