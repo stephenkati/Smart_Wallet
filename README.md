@@ -1,4 +1,4 @@
-# Budget_app
+# Smart_Wallet
 
 <a name="readme-top"></a>
 
@@ -27,9 +27,9 @@
 
 <!-- PROJECT DESCRIPTION -->
 
-# 📖 [Budget_app] <a name="about-project"></a>
+# 📖 [Smart_Wallet] <a name="about-project"></a>
 
-**[Budget_app]** is about a mobile web application where you can manage your budget: you have a list of transactions associated with a category, so that you can see how much money you spent and on what.
+**[Smart_Wallet]** is about a mobile web application where you can manage your budget: you have a list of transactions associated with a category, so that you can see how much money you spent and on what.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -69,15 +69,15 @@ In order to run this project you need:
 
 Clone this repository to your desired folder:
 
-  `cd Budget_app`
-  `git clone https://github.com/stephenkati/Budget_app.git`
+  `cd Smart_Wallet`
+  `git clone https://github.com/stephenkati/Smart_Wallet.git`
 
 
 ### Install
 
 Install this project with:
 
-  `cd Budget_app`
+  `cd Smart_Wallet`
   `bundle install`
 
   `gem install rspec`
@@ -134,7 +134,7 @@ To run tests, run the following command:
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/stephenkati/Budget_app/issues).
+Feel free to check the [issues page](https://github.com/stephenkati/Smart_Wallet/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
