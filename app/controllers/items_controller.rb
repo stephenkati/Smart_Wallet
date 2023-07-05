@@ -9,10 +9,10 @@ class ItemsController < ApplicationController
     @item.author = current_user
 
     flash[:notice] = if @item.save
-                        'Item created successfully'
-                      else
-                        'Failed to create Item!'
-                      end
+                       'Item created successfully'
+                     else
+                       'Failed to create Item!'
+                     end
     redirect_to category_path(@item.category)
   end
 
@@ -21,10 +21,10 @@ class ItemsController < ApplicationController
     @category = @item.category
 
     flash[:notice] = if @item.destroy
-                        'Item deleted successfully'
-                      else
-                        'Failed to delete Item!'
-                      end
+                       'Item deleted successfully'
+                     else
+                       'Failed to delete Item!'
+                     end
     redirect_to category_path(@category)
   end
 

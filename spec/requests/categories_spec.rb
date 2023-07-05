@@ -30,9 +30,9 @@ RSpec.describe CategoriesController, type: :request do
     let(:category_params) { { category: { name: 'my category', icon: 'icon' } } }
 
     it 'creates a new category' do
-      expect {
+      expect do
         post '/categories', params: category_params
-      }.to change(Category, :count).by(1)
+      end.to change(Category, :count).by(1)
     end
 
     it 'redirects to the categories index' do

@@ -21,17 +21,17 @@ RSpec.describe ItemsController, type: :request do
     context 'with valid parameters' do
       it 'creates a new item' do
         Category.create(name: 'my category', icon: 'icon', user_id: 1)
-        user = User.create(name: "John", email: 'user@example.com', password: 'password')
+        user = User.create(name: 'John', email: 'user@example.com', password: 'password')
         sign_in(user)
 
-        expect {
+        expect do
           post category_items_path(category), params: { item: { name: 'Item', amount: 10 } }
-        }.to change(Item, :count).by(1)
+        end.to change(Item, :count).by(1)
       end
 
       it 'sets the flash notice' do
         Category.create(name: 'my category', icon: 'icon', user_id: 1)
-        user = User.create(name: "John", email: 'user@example.com', password: 'password')
+        user = User.create(name: 'John', email: 'user@example.com', password: 'password')
         sign_in(user)
 
         post category_items_path(category), params: { item: { name: 'Item', amount: 10 } }
@@ -41,7 +41,7 @@ RSpec.describe ItemsController, type: :request do
 
       it 'redirects to the category page' do
         Category.create(name: 'my category', icon: 'icon', user_id: 1)
-        user = User.create(name: "John", email: 'user@example.com', password: 'password')
+        user = User.create(name: 'John', email: 'user@example.com', password: 'password')
         sign_in(user)
 
         post category_items_path(category), params: { item: { name: 'Item', amount: 10 } }
@@ -53,17 +53,17 @@ RSpec.describe ItemsController, type: :request do
     context 'with invalid parameters' do
       it 'does not create a new item' do
         Category.create(name: 'my category', icon: 'icon', user_id: 1)
-        user = User.create(name: "John", email: 'user@example.com', password: 'password')
+        user = User.create(name: 'John', email: 'user@example.com', password: 'password')
         sign_in(user)
 
-        expect {
+        expect do
           post category_items_path(category), params: { item: { name: '', amount: 10 } }
-        }.not_to change(Item, :count)
+        end.not_to change(Item, :count)
       end
 
       it 'sets the flash notice' do
         Category.create(name: 'my category', icon: 'icon', user_id: 1)
-        user = User.create(name: "John", email: 'user@example.com', password: 'password')
+        user = User.create(name: 'John', email: 'user@example.com', password: 'password')
         sign_in(user)
 
         post category_items_path(category), params: { item: { name: '', amount: 10 } }
@@ -73,7 +73,7 @@ RSpec.describe ItemsController, type: :request do
 
       it 'renders the new template' do
         Category.create(name: 'my category', icon: 'icon', user_id: 1)
-        user = User.create(name: "John", email: 'user@example.com', password: 'password')
+        user = User.create(name: 'John', email: 'user@example.com', password: 'password')
         sign_in(user)
 
         post category_items_path(category), params: { item: { name: '', amount: 10 } }
@@ -88,9 +88,9 @@ RSpec.describe ItemsController, type: :request do
       Category.create(name: 'my category', icon: 'icon', user_id: 1)
       item = Item.create(name: 'Item', amount: 10, author_id: 1)
 
-      expect {
+      expect do
         delete item_path(item)
-      }.to change(Item, :count).by(-1)
+      end.to change(Item, :count).by(-1)
     end
 
     it 'sets the flash notice' do

@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe 'User', type: :request do
-  
   describe 'GET /index' do
     it 'renders a successful response' do
       get users_path
@@ -13,5 +12,4 @@ RSpec.describe 'User', type: :request do
       expect(response).to render_template('index')
     end
   end
-
 end
