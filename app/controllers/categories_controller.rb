@@ -16,7 +16,6 @@ class CategoriesController < ApplicationController
 
   def create
     @category = Category.new(category_params)
-    current_user = User.create(name: 'John', email: 'user@example.com', password: 'password')
     @user = current_user
     @category.user = current_user
 
@@ -45,7 +44,6 @@ class CategoriesController < ApplicationController
 
   def destroy
     @category = Category.find(params[:id])
-    current_user = User.create(name: 'John', email: 'user@example.com', password: 'password')
     @user = current_user
     flash[:notice] = if @category.destroy
                        'Category deleted successfully'
