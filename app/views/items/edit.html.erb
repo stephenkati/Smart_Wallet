@@ -1,0 +1,21 @@
+<%= turbo_frame_tag "edit_transaction" do %>
+<% end %>
+
+<div>
+  <div>
+    <%= link_to "<< Back", category_path(@category) %>
+  </div>
+  <%= form_with(model: @item, url: category_item_path(@category), method: :patch ) do |f| %>
+    <div>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <div>
+      <%= f.label :amount %>
+      <%= f.number_field :amount %>
+    </div>
+    <div>
+      <%= f.submit "Save" %>
+    </div>
+  <% end %>
+</div>

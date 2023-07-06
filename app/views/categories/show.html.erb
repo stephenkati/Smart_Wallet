@@ -5,7 +5,7 @@
 
 <div>
   <div>
-    <%= link_to "<< Back", category_path(@category) %>
+    <%= link_to "<< Back", categories_path %>
   </div>
 
   <h1><%= @category.name %></h1>
@@ -24,6 +24,9 @@
         <strong>Author:</strong> <%= item.author.name %>
 
         <div class="actions">
+          <%= turbo_frame_tag "edit_transaction" do %>
+          <% end %>
+          <%= link_to "Edit", edit_category_item_path(@category, item) %>
           <%= button_to "Delete", category_item_path(@category, item), method: :delete %>
         </div>
       </li>
