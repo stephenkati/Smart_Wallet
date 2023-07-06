@@ -21,7 +21,7 @@ class ItemsController < ApplicationController
   def destroy
     @item = Item.find(params[:id])
     @category = @item.categories.first
-  
+
     flash[:notice] = if @item.destroy
                        'Item deleted successfully'
                      else
@@ -29,7 +29,7 @@ class ItemsController < ApplicationController
                      end
     redirect_to category_path(@category)
   end
-  
+
   def items_params
     params.require(:item).permit(:name, :amount)
   end
