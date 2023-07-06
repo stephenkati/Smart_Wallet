@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root "users#index"
+  authenticated :user do
+    root 'categories#index', as: :authenticated_root
+  end
+
+  unauthenticated do
+    root 'users#index', as: :unauthenticated_root
+  end
 
   resources :users, only: [:index]
 

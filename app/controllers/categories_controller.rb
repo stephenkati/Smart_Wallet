@@ -1,13 +1,11 @@
-# CategoriesController
-
 class CategoriesController < ApplicationController
   def index
-    @categories = Category.includes(:user).where(user_id: params[:user_id])
+    @categories = current_user.categories
   end
 
   def show
-    @category = Category.includes(:user).find(params[:id])
-    @items = Item.includes(:category).where(category_id: params[:id])
+    @category = Category.includes(items: :author).find(params[:id])
+    @items = @category.items.order(created_at: :desc)
   end
 
   def new

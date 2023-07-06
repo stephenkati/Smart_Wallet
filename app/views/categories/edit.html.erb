@@ -1,0 +1,20 @@
+<%= turbo_frame_tag "edit_category" do %>
+<% end %>
+  <div>
+    <div>
+      <%= link_to "<< Back", categories_path %>
+    </div>
+    <%= form_with(model: @category, url: category_path(@category), method: :patch ) do |f| %>
+      <div>
+        <%= f.label :name, "Name" %>
+        <%= f.text_field :name %>
+      </div>
+      <div>
+        <%= f.label :icon, "Icon" %>
+        <%= f.text_field :icon %>
+      </div>
+      <div>
+        <%= f.submit "Save" %>
+      </div>
+    <% end %>
+  </div>

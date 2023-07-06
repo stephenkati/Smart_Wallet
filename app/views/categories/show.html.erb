@@ -1,0 +1,34 @@
+<%= turbo_frame_tag "category" do %>
+<% end %>
+<%= turbo_frame_tag "new_transaction" do %>
+<% end %>
+
+<div>
+  <div>
+    <%= link_to "<< Back", category_path(@category) %>
+  </div>
+
+  <h1><%= @category.name %></h1>
+  <div class="actions">
+    <%= turbo_frame_tag "edit_category" do %>
+    <% end %>
+    <%= link_to "Edit", edit_category_path(@category) %>
+    <%= button_to "Delete", category_path(@category), method: :delete %>
+  </div>
+
+  <ul>
+    <% @items.each do |item| %>
+      <li>
+        <strong>Name:</strong> <%= item.name %><br>
+        <strong>Amount:</strong> <%= item.amount %><br>
+        <strong>Author:</strong> <%= item.author.name %>
+
+        <div class="actions">
+          <%= button_to "Delete", category_item_path(@category, item), method: :delete %>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+
+  <%= link_to "Add Transaction", new_category_item_path(@category) %>
+</div>

@@ -1,0 +1,20 @@
+<%= turbo_frame_tag "new_category" do %>
+<% end %>
+  <div>
+    <div>
+      <%= link_to "<< Back", categories_path %>
+    </div>
+    <%= form_with model: @category do |f| %>
+      <div>
+        <%= f.label :name, "Name" %>
+        <%= f.text_field :name, required: true, placeholder: "Grocery" %>
+      </div>
+      <div>
+        <%= f.label :icon, "Icon" %>
+        <%= f.text_field :icon, required: true, placeholder: "https://icon-link.com" %>
+      </div>
+      <div>
+        <%= f.submit "Save" %>
+      </div>
+    <% end %>
+  </div>

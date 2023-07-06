@@ -1,0 +1,24 @@
+<div>
+  <% if user_signed_in? %> 
+    <div> Hi <%= current_user.name.split.first %> </div> 
+    <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+  <% end %>
+</div>
+
+<%= turbo_frame_tag "new_category" do %>
+<% end %>
+  <div>
+    <%= link_to 'Add Category', new_category_path %>
+  </div>
+
+<div class="categories-list">
+  <% @categories.each do |category| %>
+    <div class="border-2 border-inherit p-4">
+      <%= link_to category_path(category) do %>
+        <%= category.icon %>
+        <%= category.name %>
+        <%= category.total_amount %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
