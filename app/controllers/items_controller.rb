@@ -26,14 +26,13 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
 
-    flash[:notice] =  if @item.update(items_params)
-                        'Item updated successfully'
-                      else
-                        'Failed to update Item!'
-                      end
+    flash[:notice] = if @item.update(items_params)
+                       'Item updated successfully'
+                     else
+                       'Failed to update Item!'
+                     end
     redirect_to category_path(@item.categories.first)
-
-  end  
+  end
 
   def destroy
     @item = Item.find(params[:id])
