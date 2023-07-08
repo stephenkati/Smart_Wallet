@@ -11,12 +11,22 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <div>
-       <p class="notice"><%= notice %></p>
-       <p class="alert"><%= alert %></p>
-    </div>
-    <main class="container mx-auto mt-28 px-5 flex">
+  <body class="w-screen h-screen bg-neutral-focus">
+    <main class="mx-auto px-5 flex flex-col w-full h-full content-center mt-4 relative">
+      <div class="absolute top-16 w-full flex justify-center h-2 items-center">
+        <% if notice.present? %>
+          <p class="notice bg-base-100 border-none text-success w-full max-w-md text-center">
+            <%= notice %>
+          </p>
+        <% end %>
+        
+        <% if alert.present? %>
+          <p class="alert bg-base-100 border-none text-error w-full flex max-w-md items-center justify-center h-2">
+            <%= alert %>
+          </p>
+        <% end %>
+      </div>
+
       <%= yield %>
     </main>
   </body>

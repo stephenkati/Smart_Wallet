@@ -3,19 +3,21 @@
 
 <div>
   <div>
-    <%= link_to "<< Back", category_path(@category) %>
+    <%= link_to "<< Back", category_path(@category), class: "text-lg text-bold text-primary-focus" %>
   </div>
-  <%= form_with(model: @item, url: category_item_path(@category), method: :patch ) do |f| %>
-    <div>
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-    </div>
-    <div>
-      <%= f.label :amount %>
-      <%= f.number_field :amount %>
-    </div>
-    <div>
-      <%= f.submit "Save" %>
-    </div>
-  <% end %>
+  <div class="flex flex-col items-center">
+    <%= form_with(model: @item, url: category_item_path(@category), method: :patch, html: { class: "bg-white p-2 my-2 text-lg w-full max-w-sm flex flex-col items-center gap-2" } ) do |f| %>
+      <div class="font-bold flex justify-between w-full text-accent ">
+        <%= f.label :name %>
+        <%= f.text_field :name, class: "rounded-full border-none w-3/4 bg-neutral text-white" %>
+      </div>
+      <div class="font-bold flex justify-between w-full text-accent">
+        <%= f.label :amount %>
+        <%= f.number_field :amount, class: "rounded-full border-none w-3/4 bg-neutral text-white" %>
+      </div>
+      <div class="font-bold bg-secondary hover:bg-secondary-focus px-4 py-1">
+        <%= f.submit "Save" %>
+      </div>
+    <% end %>
+  </div>
 </div>

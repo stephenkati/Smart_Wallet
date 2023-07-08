@@ -3,35 +3,50 @@
 <%= turbo_frame_tag "new_transaction" do %>
 <% end %>
 
-<div>
-  <div>
-    <%= link_to "<< Back", categories_path %>
+<div class="w-full">
+ 
+  <div class="bg-primary p-5 mb-4 w-full flex flex-col gap-2">
+    <div class="flex justify-between items-center text-white text-lg px-2">
+      <span> <%= @category.icon %> </span>
+      <h1 class="text-2xl font-bold"><%= @category.name %></h1>
+      <p> <%= "Total $#{@category.total_amount}" %> </p>
+    </div>
+    <div class="flex gap-2">
+      <%= turbo_frame_tag "edit_category" do %>
+      <% end %>
+      <%= link_to "Edit", edit_category_path(@category), class: "bg-secondary text-white py-1 px-2" %>
+      <%= button_to "Delete", category_path(@category), method: :delete, class: "bg-red-700 text-white py-1 px-2" %>
+    </div>
+  </div>
+  
+   <div class="w-full flex justify-between">
+    <%= link_to "<< Back", categories_path, class: "text-lg text-bold text-primary-focus" %>
+    <%= link_to "Add Transaction", new_category_item_path(@category), class: "text-secondary-focus" %>
   </div>
 
-  <h1><%= @category.name %></h1>
-  <div class="actions">
-    <%= turbo_frame_tag "edit_category" do %>
-    <% end %>
-    <%= link_to "Edit", edit_category_path(@category) %>
-    <%= button_to "Delete", category_path(@category), method: :delete %>
-  </div>
-
-  <ul>
+  <ul class="flex flex-col gap-2 w-full items-center text-accent" >
     <% @items.each do |item| %>
-      <li>
-        <strong>Name:</strong> <%= item.name %><br>
-        <strong>Amount:</strong> <%= item.amount %><br>
-        <strong>Author:</strong> <%= item.author.name %>
+      <li class="bg-white w-full max-w-screen-sm h-24 flex flex-col gap-2" >
+        <div class="flex my-2 px-2 w-full font-bold justify-between">
+          <div class="text-left">
+            <%= item.name %>
+          </div>
+          <div class="text-center">
+            <%= item.created_at.strftime("%d %b %Y") %>
+          </div>
+          <div class="text-right">
+            <%= "$#{item.amount}" %>
+          </div>
+        </div>
 
-        <div class="actions">
+        <div class="flex gap-2">
           <%= turbo_frame_tag "edit_transaction" do %>
           <% end %>
-          <%= link_to "Edit", edit_category_item_path(@category, item) %>
-          <%= button_to "Delete", category_item_path(@category, item), method: :delete %>
+          <%= link_to "Edit", edit_category_item_path(@category, item), class: "bg-secondary text-white py-1 px-2" %>
+          <%= button_to "Delete", category_item_path(@category, item), method: :delete, class: "bg-red-700 text-white py-1 px-2" %>
         </div>
       </li>
     <% end %>
   </ul>
 
-  <%= link_to "Add Transaction", new_category_item_path(@category) %>
 </div>

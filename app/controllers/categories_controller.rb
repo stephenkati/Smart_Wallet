@@ -17,11 +17,11 @@ class CategoriesController < ApplicationController
     @user = current_user
     @category.user = current_user
 
-    flash[:notice] = if @category.save
-                       'Category created successfully'
-                     else
-                       'Failed to create Category!'
-                     end
+    if @category.save
+      flash[:notice] = 'Category created successfully'
+    else
+      flash[:alert] = 'Failed to create Category!'
+    end
     redirect_to categories_path
   end
 
@@ -32,22 +32,22 @@ class CategoriesController < ApplicationController
   def update
     @category = Category.includes(:user).find_by(id: params[:id])
 
-    flash[:notice] = if @category.update(category_params)
-                       'Category updated successfully'
-                     else
-                       'Failed to update Category!'
-                     end
+    if @category.update(category_params)
+      flash[:notice] = 'Category updated successfully'
+    else
+      flash[:alert] = 'Failed to update Category!'
+    end
     redirect_to category_path(@category)
   end
 
   def destroy
     @category = Category.find(params[:id])
     @user = current_user
-    flash[:notice] = if @category.destroy
-                       'Category deleted successfully'
-                     else
-                       'Failed to delete Category!'
-                     end
+    flash[:alert] = if @category.destroy
+                      'Category deleted successfully'
+                    else
+                      'Failed to delete Category!'
+                    end
     redirect_to categories_path
   end
 

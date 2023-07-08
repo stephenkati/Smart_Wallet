@@ -1,24 +1,30 @@
-<div>
-  <% if user_signed_in? %> 
-    <div> Hi <%= current_user.name.split.first %> </div> 
-    <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
-  <% end %>
-</div>
-
-<%= turbo_frame_tag "new_category" do %>
-<% end %>
-  <div>
-    <%= link_to 'Add Category', new_category_path %>
+<div class="w-full text-accent">
+  <div class="flex justify-between px-3 bg-primary py-5 h-28">
+    <% if user_signed_in? %> 
+      <div class="font-bold text-white"> Hi <%= current_user.name.split.first %> </div>
+      <h1 class="text-white text-xl font-bold text-center"> Smart Wallet </h1>
+      <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "text-error font-bold" %>
+    <% end %>
   </div>
 
-<div class="categories-list">
-  <% @categories.each do |category| %>
-    <div class="border-2 border-inherit p-4">
-      <%= link_to category_path(category) do %>
-        <%= category.icon %>
-        <%= category.name %>
-        <%= category.total_amount %>
-      <% end %>
-    </div>
+  <%= turbo_frame_tag "new_category" do %>
   <% end %>
+    <div class="w-full flex  flex-col items-center m-2">
+      <%= link_to 'Add Category', new_category_path, class: "text-secondary-focus" %>
+    </div>
+
+  <ul class="w-full flex flex-col gap-2 items-center">
+    <% @categories.each do |category| %>
+      <li class="bg-white w-full max-w-sm h-min flex items-center ">
+        <%= link_to category_path(category), class: "w-full flex justify-between p-3" do %>
+          <span> <%= category.icon %> </span>
+          <div class="flex flex-col gap-1">
+            <span class="font-bold"> <%= category.name %> </span>
+            <%= category.created_at.strftime("%d %b %Y") %>
+          </div>
+          <span class="text-secondary-focus"> <%= "Total $#{category.total_amount}" %> </span>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
 </div>

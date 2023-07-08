@@ -1,5 +1,19 @@
-<div>
-  <%= button_to "Sign in ", new_user_session_path %> 
+<div class="w-full flex flex-col items-center gap-4 h-full justify-evenly" >
+  <div class="w-full flex flex-col items-center gap-5 max-w-md text-center justify-evenly h-2/3">
+    <h2 class="font-bold text-primary text-2xl"> Smart Wallet </h2>
+    <h3 class="text-lg font-bold">
+      Welcome to your personalized budget app
+    </h3>
+    <p>
+      With budgeting <strong> categories </strong> and <strong> transactions </strong>, <em> Smart Wallet </em>  empowers you to make informed financial decisions, achieve their financial goals, and gain control over their money.
+    </p>
+    <p class="text-secondary">
+      Please sign in or sign up to continue
+    </p>
+  </div>
+  <div>
+    <%= button_to "Sign in ", new_user_session_path, class: "bg-primary py-2 px-7 font-bold text-white hover:bg-primary-focus" %> 
+  </div>
+
 </div>
 
-users

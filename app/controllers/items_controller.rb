@@ -9,12 +9,12 @@ class ItemsController < ApplicationController
     @item = Item.new(items_params)
     @item.author = current_user
 
-    flash[:notice] = if @item.save
-                       @item.categories << Category.find(params[:category_id])
-                       'Item created successfully'
-                     else
-                       'Failed to create Item!'
-                     end
+    if @item.save
+      @item.categories << Category.find(params[:category_id])
+      flash[:notice] = 'Item created successfully'
+    else
+      flash[:alert] = 'Failed to create Item!'
+    end
     redirect_to category_path(@category)
   end
 
@@ -26,11 +26,11 @@ class ItemsController < ApplicationController
   def update
     @item = Item.find(params[:id])
 
-    flash[:notice] = if @item.update(items_params)
-                       'Item updated successfully'
-                     else
-                       'Failed to update Item!'
-                     end
+    if @item.update(items_params)
+      flash[:notice] = 'Item updated successfully'
+    else
+      flash[:alert] = 'Failed to update Item!'
+    end
     redirect_to category_path(@item.categories.first)
   end
 
@@ -38,11 +38,11 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @category = @item.categories.first
 
-    flash[:notice] = if @item.destroy
-                       'Item deleted successfully'
-                     else
-                       'Failed to delete Item!'
-                     end
+    flash[:alert] = if @item.destroy
+                      'Item deleted successfully'
+                    else
+                      'Failed to delete Item!'
+                    end
     redirect_to category_path(@category)
   end
 
