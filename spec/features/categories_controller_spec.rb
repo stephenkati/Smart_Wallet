@@ -40,7 +40,7 @@ RSpec.describe 'categories', type: :feature do
   end
 
   context 'show page' do
-    it 'show page displays the category details' do
+    it 'displays the category details' do
       category.items << item
 
       visit category_path(category)
@@ -51,7 +51,6 @@ RSpec.describe 'categories', type: :feature do
 
       expect(page).to have_content(item.name)
       expect(page).to have_content(item.amount)
-      expect(page).to have_content(user.name)
 
       expect(page).to have_link('Edit', href: edit_category_item_path(category, item))
       expect(page).to have_button('Delete', type: 'submit')

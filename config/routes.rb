@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   end
 
   unauthenticated do
-    root 'users#index', as: :unauthenticated_root
+    root 'users#splash', as: :unauthenticated_root
   end
 
-  resources :users, only: [:index]
+  resources :users, only: [:splash]
 
   resources :categories do
     resources :items, only: [:new, :create, :edit, :update, :destroy]

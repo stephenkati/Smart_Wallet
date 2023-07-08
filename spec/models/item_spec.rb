@@ -23,6 +23,16 @@ RSpec.describe Item, type: :model do
       expect(item).to_not be_valid
     end
 
+    it 'should validate numericality of amount' do
+      expect(item).to be_valid
+
+      item.amount = 'string'
+      expect(item).to_not be_valid
+
+      item.amount = 0
+      expect(item).to_not be_valid
+    end
+
     it 'should validate presence of author_id' do
       expect(item).to be_valid
       item.author_id = nil
