@@ -1,0 +1,15 @@
+<div class="absolute z-10 drop-shadow-2xl w-3/4 flex justify-center h-2 items-center">
+
+  <% if notice.present? %>
+    <p class="notice bg-secondary border-none text-white max-w-md text-center rounded-full px-2">
+      <%= notice %>
+    </p>
+  <% end %>
+  
+  <% if alert.present? %>
+    <p class="alert bg-rose-700 border-none text-white flex max-w-md items-center justify-center h-2">
+      <%= alert %>
+    </p>
+  <% end %>
+
+</div>

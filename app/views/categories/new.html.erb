@@ -12,7 +12,7 @@
         </div>
         <div class="font-bold flex justify-between w-full text-accent">
           <%= f.label :icon, "Icon" %>
-          <%= f.text_field :icon, required: true, placeholder: "https://icon-link.com", class: "rounded-full border-none w-3/4 bg-neutral text-white" %>
+          <%= f.select :icon, Category::ICONS.invert, { include_blank: true }, { required: true, class: "rounded-full border-none w-3/4 bg-neutral text-white" } %>
         </div>
         <div class="font-bold bg-secondary hover:bg-secondary-focus px-4 py-1">
           <%= f.submit "Save" %>

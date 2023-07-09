@@ -1,5 +1,8 @@
 <div class="w-full flex justify-center">
   <div class="flex flex-col items-center bg-white w-max">
+
+    <%= render partial: 'layouts/popup' %>
+
     <h2 class="font-bold text-secondary text-2xl">Sign up</h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "p-2 my-2 text-lg w-full max-w-sm flex flex-col items-center gap-2" }) do |f| %>

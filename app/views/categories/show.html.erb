@@ -1,39 +1,50 @@
 <%= turbo_frame_tag "category" do %>
 <% end %>
-<%= turbo_frame_tag "new_transaction" do %>
-<% end %>
+
 
 <div class="w-full">
  
   <div class="bg-primary p-5 mb-4 w-full flex flex-col gap-2">
-    <div class="flex justify-between items-center text-white text-lg px-2">
-      <span> <%= @category.icon %> </span>
-      <h1 class="text-2xl font-bold"><%= @category.name %></h1>
+
+    <div class="text-white flex justify-between px-2 text-xl gap-1 items-center">
+      <%= link_to raw('<i class="fa-sharp fa-solid fa-angle-left"></i>'), categories_path %>
+      <h1 class="text-2xl"> TRANSACTIONS </h1>
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </div>
+
+    <div class="flex justify-between items-center text-white text-sm px-2 gap-1">  
+
+      <div class="flex gap-2">
+        <%= turbo_frame_tag "edit_category" do %>
+        <% end %>
+        <%= content_tag :i, "", class: "fa-sharp fa-solid #{@category.icon} text-xl" %>
+        <%= link_to raw('<i class="fa-sharp fa-solid fa-pen-to-square"></i>'), edit_category_path(@category), class: "text-secondary" %>
+        <%= button_to raw('<i class="fa-sharp fa-solid fa-trash"></i>'), category_path(@category), method: :delete, class: "text-red-700" %>
+      </div>
+
+      <h2 class="text-2xl font-bold"><%= @category.name %></h2>
       <p> <%= "Total $#{@category.total_amount}" %> </p>
+
     </div>
-    <div class="flex gap-2">
-      <%= turbo_frame_tag "edit_category" do %>
-      <% end %>
-      <%= link_to "Edit", edit_category_path(@category), class: "bg-secondary text-white py-1 px-2" %>
-      <%= button_to "Delete", category_path(@category), method: :delete, class: "bg-red-700 text-white py-1 px-2" %>
-    </div>
-  </div>
-  
-   <div class="w-full flex justify-between">
-    <%= link_to "<< Back", categories_path, class: "text-lg text-bold text-primary-focus" %>
-    <%= link_to "Add Transaction", new_category_item_path(@category), class: "text-secondary-focus" %>
+
   </div>
 
-  <ul class="flex flex-col gap-2 w-full items-center text-accent" >
+  <%= render partial: 'layouts/popup' %>
+
+  <ul class="flex flex-col gap-2 w-full items-center text-accent p-2 overflow-y-auto h-80 max-h-96">
+
     <% @items.each do |item| %>
       <li class="bg-white w-full max-w-screen-sm h-24 flex flex-col gap-2" >
+
         <div class="flex my-2 px-2 w-full font-bold justify-between">
           <div class="text-left">
             <%= item.name %>
           </div>
+
           <div class="text-center">
             <%= item.created_at.strftime("%d %b %Y") %>
           </div>
+
           <div class="text-right">
             <%= "$#{item.amount}" %>
           </div>
@@ -42,11 +53,19 @@
         <div class="flex gap-2">
           <%= turbo_frame_tag "edit_transaction" do %>
           <% end %>
-          <%= link_to "Edit", edit_category_item_path(@category, item), class: "bg-secondary text-white py-1 px-2" %>
-          <%= button_to "Delete", category_item_path(@category, item), method: :delete, class: "bg-red-700 text-white py-1 px-2" %>
+          <%= link_to raw('<i class="fa-sharp fa-solid fa-pen-to-square"></i>'), edit_category_item_path(@category, item), class: "text-secondary" %>
+          <%= button_to raw('<i class="fa-sharp fa-solid fa-trash"></i>'), category_item_path(@category, item), method: :delete, class: "text-red-700" %>
         </div>
+
       </li>
     <% end %>
+
   </ul>
+
+  <%= turbo_frame_tag "new_transaction" do %>
+  <% end %>
+  <div class="w-full flex flex-col fixed bottom-0 left-0 right-0 items-center bg-secondary p-2">
+     <%= link_to "Add Transaction", new_category_item_path(@category), class: "text-white  w-5/6 h-3/4 ring-2 ring-white max-w-md py-2 text-center font-bold " %>
+  </div>
 
 </div>

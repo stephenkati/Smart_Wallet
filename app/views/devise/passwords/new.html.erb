@@ -2,6 +2,8 @@
   <div class="flex flex-col items-center bg-white w-max">
     <h2 class="font-bold text-secondary text-2xl">Forgot your password?</h2>
 
+    <%= render partial: 'layouts/popup' %>
+
     <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "p-2 my-2 text-lg w-full max-w-sm flex flex-col items-center gap-2" }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 

@@ -11,23 +11,12 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="w-screen h-screen bg-neutral-focus">
-    <main class="mx-auto px-5 flex flex-col w-full h-full content-center mt-4 relative">
-      <div class="absolute top-16 w-full flex justify-center h-2 items-center">
-        <% if notice.present? %>
-          <p class="notice bg-base-100 border-none text-success w-full max-w-md text-center">
-            <%= notice %>
-          </p>
-        <% end %>
-        
-        <% if alert.present? %>
-          <p class="alert bg-base-100 border-none text-error w-full flex max-w-md items-center justify-center h-2">
-            <%= alert %>
-          </p>
-        <% end %>
-      </div>
+  <body class="w-screen h-screen bg-neutral-focus m-0 overflow-hidden">
 
+    <main class=" flex flex-col w-full h-full content-center items-center relative">
       <%= yield %>
     </main>
+
+    <script src="https://kit.fontawesome.com/7415ea4535.js" crossorigin="anonymous" async defer></script>
   </body>
 </html>
