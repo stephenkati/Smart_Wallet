@@ -1,4 +1,6 @@
 {
+  "name": "Budget_app",
+  "private": true,
   "dependencies": {
     "tailwindcss": "^2.2.19"
   },
