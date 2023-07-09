@@ -13,7 +13,7 @@ class Category < ApplicationRecord
     'fa-truck-medical' => 'Medical Truck',
     'fa-piggy-bank' => 'Piggy Bank',
     'fa-credit-card' => 'Credit Card'
-  }.freeze 
+  }.freeze
 
   def total_amount
     items.sum(:amount)
