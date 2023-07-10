@@ -2,7 +2,8 @@
   "name": "Budget_app",
   "private": true,
   "dependencies": {
-    "tailwindcss": "^2.2.19"
+    "tailwindcss": "^3.1.0",
+    "tailwindcss-themer": "^3.1.0"
   },
   "devDependencies": {
     "daisyui": "^3.1.10",
@@ -10,6 +11,6 @@
     "stylelint-config-standard": "^21.0.0",
     "stylelint-csstree-validator": "^1.9.0",
     "stylelint-scss": "^3.21.0",
-    "tailwindcss": "^2.2.19"
+    "tailwindcss": "^3.1.0"
   }
 }
