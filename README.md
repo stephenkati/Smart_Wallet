@@ -69,42 +69,52 @@ In order to run this project you need:
 
 Clone this repository to your desired folder:
 
-  `cd Smart_Wallet`
-  `git clone https://github.com/stephenkati/Smart_Wallet.git`
+  ```
+  cd Smart_Wallet
+  ```
+  ```
+  git clone https://github.com/stephenkati/Smart_Wallet.git
+  ```
 
 
 ### Install
 
 Install this project with:
 
-  `cd Smart_Wallet`
-  `bundle install`
-
-  `gem install rspec`
-
-  `gem install --no-document rubocop -v '>= 1.0, < 2.0' # https://docs.rubocop.org/en/stable/installation/`
-
-  `npm install --save-dev stylelint@13.x stylelint-scss@3.x stylelint-config-standard@21.x stylelint-csstree-validator@1.x`
+  ```
+  cd Smart_Wallet
+  ```
+  ```
+  bundle install && npm install
+  ```
 
 
 ### Usage
 
 To run the project, execute the following command:
 
-- `rails s`
+```
+rails s
+```
 
 ### Run tests
 
 To run tests, run the following command:
 
-- `rubocop --color`
-- `npx stylelint "**/*.{css,scss}"`
-- `rspec spec`
+```
+rubocop --color
+```
+```
+npx stylelint "**/*.{css,scss}"
+```
+```
+rspec spec
+```
 
 
 ### Deployment
 
-  - [N/A]
+  - The website is deployed [here](https://smart-wallet-hfqh.onrender.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
