@@ -1,4 +1,4 @@
-<div class="w-full text-accent relative">
+<div class="w-full text-accent relative ">
   <div class="flex flex-col px-3 bg-primary py-5 h-28 justify-between">
 
     <div class="flex justify-between px-3 gap-2">
@@ -19,11 +19,11 @@
 
   <%= render partial: 'layouts/popup' %>
   
-  <ul class="w-full flex flex-col gap-2 items-center mt-4 px-2 overflow-y-auto h-80 max-h-96 ">
+  <ul class="w-full flex flex-col gap-2 items-center mt-4 mb-4 px-2">
 
     <% @categories.each do |category| %>
 
-      <li class="bg-white w-full max-w-sm h-min flex items-center ">
+      <li class="bg-white w-full max-w-sm h-min flex items-center">
 
         <%= link_to category_path(category), class: "w-full flex justify-between p-3 items-center" do %>
           <div class="flex gap-4">
@@ -44,7 +44,7 @@
 
     <%= turbo_frame_tag "new_category" do %>
     <% end %>
-    <div class="w-full flex flex-col fixed bottom-0 left-0 right-0 items-center bg-secondary p-2">
+    <div class="w-full flex flex-col bottom-0 left-0 right-0 items-center bg-secondary p-2">
       <%= link_to 'Add Category', new_category_path, class: "text-white  w-5/6 h-3/4 ring-2 ring-white max-w-md py-2 text-center font-bold " %>
     </div>
 </div>
