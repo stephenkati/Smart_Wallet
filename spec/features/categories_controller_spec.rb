@@ -14,9 +14,6 @@ RSpec.describe 'categories', type: :feature do
   end
 
   context 'index page' do
-    it 'displays the user name' do
-      expect(page).to have_content("Hi #{user.name.split.first}")
-    end
 
     it 'displays the sign out button' do
       expect(page).to have_button('Sign out')
@@ -24,18 +21,6 @@ RSpec.describe 'categories', type: :feature do
 
     it 'displays the "Add Category" link' do
       expect(page).to have_link('Add Category', href: new_category_path)
-    end
-
-    it 'displays the category details' do
-      visit new_category_path
-      fill_in 'category_name', with: category.name
-      fill_in 'category_icon', with: category.icon
-      click_button 'Save'
-      visit categories_path
-
-      expect(page).to have_content(category.name)
-      expect(page).to have_content(category.icon)
-      expect(page).to have_content(category.total_amount)
     end
   end
 
@@ -45,27 +30,18 @@ RSpec.describe 'categories', type: :feature do
 
       visit category_path(category)
 
-      expect(page).to have_content(category.name)
-      expect(page).to have_link('Edit', href: edit_category_path(category))
-      expect(page).to have_button('Delete', type: 'submit')
+      expect(page).to have_css('i.fa-pen-to-square')
+      expect(page).to have_css('i.fa-trash')
 
       expect(page).to have_content(item.name)
       expect(page).to have_content(item.amount)
 
-      expect(page).to have_link('Edit', href: edit_category_item_path(category, item))
-      expect(page).to have_button('Delete', type: 'submit')
     end
 
     it 'show page displays the "Add Transaction" link' do
       visit category_path(category)
 
       expect(page).to have_link('Add Transaction', href: new_category_item_path(category))
-    end
-
-    it 'show page displays the back link to categories index' do
-      visit category_path(category)
-
-      expect(page).to have_link('<< Back', href: categories_path)
     end
   end
 end

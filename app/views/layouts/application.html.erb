@@ -11,11 +11,10 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body class="w-screen bg-neutral-focus m-0 flex items-center relative justify-center">
+  <body class="w-screen h-screen bg-neutral-focus">
+    <%= render partial: 'layouts/popup' %>
 
-    <main class=" flex flex-col w-full h-max content-center items-center justify-center  bg-neutral-focus ">
-      <%= yield %>
-    </main>
+    <%= yield %>
 
     <script src="https://kit.fontawesome.com/7415ea4535.js" crossorigin="anonymous" async defer></script>
   </body>

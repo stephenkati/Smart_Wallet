@@ -1,13 +1,13 @@
-<div class="absolute z-10 drop-shadow-2xl w-3/4 flex justify-center h-2 items-center">
+<div class=" w-full flex justify-center">
 
   <% if notice.present? %>
-    <p class="notice bg-secondary border-none text-white max-w-md text-center rounded-full px-2">
+    <p class="notice py-2 px-3 bg-green-50 mb-5 text-secondary font-medium rounded-lg inline-block">
       <%= notice %>
     </p>
   <% end %>
   
   <% if alert.present? %>
-    <p class="alert bg-rose-700 border-none text-white flex max-w-md items-center justify-center h-2">
+    <p class="alert py-2 px-3 mb-5 text-red-700 font-medium rounded-lg inline-block">
       <%= alert %>
     </p>
   <% end %>
