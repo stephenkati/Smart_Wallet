@@ -14,7 +14,6 @@ RSpec.describe 'categories', type: :feature do
   end
 
   context 'index page' do
-
     it 'displays the sign out button' do
       expect(page).to have_button('Sign out')
     end
@@ -35,7 +34,6 @@ RSpec.describe 'categories', type: :feature do
 
       expect(page).to have_content(item.name)
       expect(page).to have_content(item.amount)
-
     end
 
     it 'show page displays the "Add Transaction" link' do
