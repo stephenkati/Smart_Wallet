@@ -134,7 +134,7 @@ rspec spec
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **[]**
+- [ ] **[Tracking most frequent transactions]**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -168,7 +168,7 @@ If you like this project please show support by staring ⭐️.
 
 ## Presentation <a name="presentation"></a>
 
-* I made a short [video]() presentation.
+* I made a short [video](https://www.loom.com/share/7b3a446fdd954b49b56ea513efdfc865) presentation.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
