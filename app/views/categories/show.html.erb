@@ -1,0 +1,66 @@
+<div class="w-full text-accent h-screen flex flex-col justify-between  bg-neutral-focus">
+ 
+  <div class="bg-primary p-5 mb-4 w-full flex flex-col gap-2">
+
+    <div class="text-white flex justify-between px-2 text-xl gap-1 items-center">
+      <%= link_to raw('<i class="fa-sharp fa-solid fa-angle-left"></i>'), categories_path %>
+      <h1 class="text-2xl"> TRANSACTIONS </h1>
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </div>
+
+    <div class="flex justify-between items-center text-white text-sm px-2 gap-1">  
+
+      <div class="flex gap-2">
+        <%= turbo_frame_tag "edit_category" do %>
+        <% end %>
+        <%= content_tag :i, "", class: "fa-sharp fa-solid #{@category.icon} text-xl" %>
+        <%= link_to raw('<i class="fa-sharp fa-solid fa-pen-to-square"></i>'), edit_category_path(@category), class: "text-secondary" %>
+        <%= button_to raw('<i class="fa-sharp fa-solid fa-trash"></i>'), category_path(@category), method: :delete, class: "text-red-700" %>
+      </div>
+
+      <div class="flex gap-4">
+        <p class="">Most Recent</p>
+        <p> Most Ancient </p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <ul class="flex flex-col gap-2 w-full items-center text-accent p-2  bg-neutral-focus">
+
+    <% @items.each do |item| %>
+      <li class="bg-white w-full max-w-sm h-24 flex flex-col gap-2" >
+
+        <div class="flex my-2 px-2 w-full font-bold justify-between">
+          <div class="text-left">
+            <%= item.name %>
+          </div>
+
+          <div class="text-center">
+            <%= item.created_at.strftime("%d %b %Y") %>
+          </div>
+
+          <div class="text-right">
+            <%= "$#{item.amount}" %>
+          </div>
+        </div>
+
+        <div class="flex gap-2">
+          <%= turbo_frame_tag "edit_transaction" do %>
+          <% end %>
+          <%= link_to raw('<i class="fa-sharp fa-solid fa-pen-to-square"></i>'), edit_category_item_path(@category, item), class: "text-secondary" %>
+          <%= button_to raw('<i class="fa-sharp fa-solid fa-trash"></i>'), category_item_path(@category, item), method: :delete, class: "text-red-700" %>
+        </div>
+
+      </li>
+    <% end %>
+
+  </ul>
+
+  <%= turbo_frame_tag "new_transaction" do %>
+  <% end %>
+  <div class="w-full flex justify-center items-center bg-secondary p-2">
+     <%= link_to "Add Transaction", new_category_item_path(@category), class: "text-white w-5/6 ring-2 ring-white max-w-md py-2 text-center font-bold" %>
+  </div>
+</div>

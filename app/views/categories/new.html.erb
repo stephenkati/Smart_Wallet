@@ -1,0 +1,22 @@
+<%= turbo_frame_tag "new_category" do %>
+<% end %>
+  <div>
+    <div>
+      <%= link_to "<< Back", categories_path, class: "text-lg text-bold text-primary-focus" %>
+    </div>
+    <div class="flex flex-col items-center">
+      <%= form_with model: @category, html: { class: "bg-white p-2 my-2 text-lg w-full max-w-sm flex flex-col items-center gap-2" } do |f| %>
+        <div class="font-bold flex justify-between w-full text-accent">
+          <%= f.label :name, "Name" %>
+          <%= f.text_field :name, required: true, placeholder: "Grocery", class: "rounded-full border-none w-3/4 bg-neutral text-white" %>
+        </div>
+        <div class="font-bold flex justify-between w-full text-accent">
+          <%= f.label :icon, "Icon" %>
+          <%= f.select :icon, Category::ICONS.invert, { include_blank: true }, { required: true, class: "rounded-full border-none w-3/4 bg-neutral text-white" } %>
+        </div>
+        <div class="font-bold bg-secondary hover:bg-secondary-focus px-4 py-1">
+          <%= f.submit "Save" %>
+        </div>
+      <% end %>
+    </div>
+  </div>

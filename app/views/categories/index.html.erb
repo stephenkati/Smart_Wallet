@@ -1,0 +1,49 @@
+<div class="w-full text-accent h-full flex flex-col justify-between bg-neutral-focus">
+  <div class="flex flex-col px-3 bg-primary py-5 h-28 justify-between">
+
+    <div class="text-white flex justify-between px-4 text-xl items-center">
+      <i class="fa-sharp fa-solid fa-bars"></i>
+      <h1 class="text-2xl"> CATEGORIES </h1>
+      <% if user_signed_in? %> 
+        <%= button_to "Sign out", destroy_user_session_path, method: :delete, class: "text-error font-bold" %>
+      <% end %>
+    </div>
+
+    <div class="w-full flex text-white justify-between">
+      <i class="fa-sharp fa-solid"></i>
+      <div class="flex gap-1">
+        <p class="p-2">Most Recent</p>
+        <p class="p-2"> Most Ancient </p>
+      </div>
+    </div>
+  </div>
+  
+  <ul class="w-full flex flex-col gap-2 items-center p-2 bg-neutral-focus">
+
+    <% @categories.each do |category| %>
+
+      <li class="bg-white w-full max-w-sm h-min flex items-center">
+
+        <%= link_to category_path(category), class: "w-full flex justify-between p-3 items-center" do %>
+          <div class="flex gap-4">
+            <%= content_tag :i, "", class: "fa-sharp fa-solid #{category.icon} text-5xl" %>
+            <div class="flex flex-col gap-1">
+              <span class="font-bold"> <%= category.name %> </span>
+              <%= category.created_at.strftime("%d %b %Y") %>
+            </div>
+          </div>
+          <span class="text-accent"> <%= "$#{category.total_amount}" %> </span>
+        <% end %>
+
+      </li>
+
+    <% end %>
+
+  </ul>
+
+  <%= turbo_frame_tag "new_category" do %>
+  <% end %>
+  <div class="w-full flex justify-center items-center bg-secondary p-2">
+    <%= link_to 'Add Category', new_category_path, class: "text-white w-5/6 ring-2 ring-white max-w-md py-2 text-center font-bold " %>
+  </div>
+</div>
