@@ -1,42 +1,41 @@
-<div class="w-full flex justify-center items-center h-full">
-  <div class="flex flex-col items-center bg-white w-max">
+<div class="w-full">
+  <div class="flex flex-col items-center">
 
-    <h2 class="font-bold text-secondary text-2xl">Sign up</h2>
+    <div class="bg-primary w-full justify-center p-5 text-white flex justify-between items-center">
+      <%= link_to unauthenticated_root_path do %>
+        <i class="fa-solid fa-arrow-left-long"></i>
+      <% end %>
+      <h2 class="text-2xl">SIGN UP</h2>
+      <p>Sign Up</p>
+    </div>
 
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "p-2 my-2 text-lg w-full max-w-sm flex flex-col items-center gap-2" }) do |f| %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { class: "p-2 my-2 text-lg w-full max-w-sm flex flex-col items-center" }) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
       <div class="font-bold flex flex-col w-full text-accent items-center">
-        <%= f.label :name %>
-        <%= f.text_field :name, autofocus: true, autocomplete: "name", required: true, class: "rounded-full border-none w-3/4 bg-neutral text-white" %>
+        <%= f.text_field :name, autofocus: true, autocomplete: "name", placeholder: "name",required: true, class: "border-2 w-full bg-white text-white my-1" %>
       </div>
 
       <div class="font-bold flex flex-col w-full text-accent items-center">
-        <%= f.label :email %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, class: "rounded-full border-none w-3/4 bg-neutral text-white w-min" %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "email", required: true, class: "border-2 w-full bg-white text-white my-1" %>
       </div>
 
       <div class="font-bold flex flex-col w-full text-accent items-center">
-        <div class="flex">
-          <%= f.label :password %>
-          <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> characters minimum)</em>
-          <% end %>
-        </div>
-        <%= f.password_field :password, autocomplete: "new-password", required: true, class: "rounded-full border-none w-3/4 bg-neutral text-white" %>
+        <%= f.password_field :password, autocomplete: "new-password", placeholder: "password", required: true, class: "border-2 w-full bg-white text-white my-1" %>
       </div>
 
       <div class="font-bold flex flex-col w-full text-accent items-center">
-        <%= f.label :password_confirmation %>
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true, class: "rounded-full border-none w-3/4 bg-neutral text-white" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "confirm password", required: true, class: "border-2 w-full bg-white text-white mb-2" %>
       </div>
 
-      <div class="font-bold bg-secondary hover:bg-secondary-focus px-4 py-1">
+      <div class="font-bold bg-primary hover:bg-primary-focus px-4 py-1 text-white my-2">
         <%= f.submit "Sign up" %>
       </div>
     <% end %>
 
-    <%= render "devise/shared/links" %>
+    <div class="flex flex-col gap-1 justify-center items-center">
+      <%= render "devise/shared/links" %>
+    </div>
   </div>
 </div>
 
