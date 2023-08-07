@@ -4,9 +4,11 @@
     <h2 class="font-bold text-primary text-2xl"> Smart Wallet </h2>
   </div>
 
-  <div class="flex flex-col items-center justify-center gap-2">
-    <%= button_to "LOG IN", new_user_session_path, class: "bg-primary text-white px-7 py-2" %>
-    <%= button_to "SIGN UP", new_user_registration_path, class: "hover:bg-neutral-focus px-7 py-2" %>
+  <div class="flex justify-center w-full ">
+    <div class="w-5/6 flex-col items-center gap-2 max-w-sm">
+      <%= link_to "LOG IN", new_user_session_path, class: "w-full bg-primary text-white text-center flex justify-center py-2" %>
+      <%= button_to "SIGN UP", new_user_registration_path, class: "w-full text-center flex justify-center py-2" %>
+    </div>
   </div>
 
 </div>
